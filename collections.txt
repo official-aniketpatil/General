@@ -1,0 +1,57 @@
+1)	public static <T> boolean addAll(Collection<? super T> c,T... elements)
+
+Adds all of the specified elements to the specified collection. Elements to be added may be specified individually or as an array. The behavior of this convenience method is identical to that of c.addAll(Arrays.asList(elements)), but this method is likely to run significantly faster under most implementations.
+When elements are specified individually, this method provides a convenient way to add a few elements to an existing collection:
+
+     Collections.addAll(flavors, "Peaches 'n Plutonium", "Rocky Racoon");
+
+2)	public static <T> Queue<T> asLifoQueue(Deque<T> deque)
+
+Returns a view of a Deque as a Last-in-first-out (Lifo) Queue. Method add is mapped to push, remove is mapped to pop and so on. This view can be useful when you would like to use a method requiring a Queue but you need Lifo ordering.
+
+3)	public static <T> int binarySearch(List<? extends Comparable<? super T>> list, T key)
+
+Searches the specified list for the specified object using the binary search algorithm. The list must be sorted into ascending order according to the natural ordering of its elements (as by the sort(List) method) prior to making this call. If it is not sorted, the results are undefined. If the list contains multiple elements equal to the specified object, there is no guarantee which one will be found.
+This method runs in log(n) time for a "random access" list (which provides near-constant-time positional access). If the specified list does not implement the RandomAccess interface and is large, this method will do an iterator-based binary search that performs O(n) link traversals and O(log n) element comparisons.
+
+
+4) 	public static <E> Collection<E> checkedCollection(Collection<E> c,Class<E> type)
+
+Returns a dynamically typesafe view of the specified collection. Any attempt to insert an element of the wrong type will result in an immediate ClassCastException. Assuming a collection contains no incorrectly typed elements prior to the time a dynamically typesafe view is generated, and that all subsequent access to the collection takes place through the view, it is guaranteed that the collection cannot contain an incorrectly typed element.
+
+5)	public static <T> void copy(List<? super T> dest, List<? extends T> src)
+
+Copies all of the elements from one list into another. After the operation, the index of each copied element in the destination list will be identical to its index in the source list. The destination list must be at least as long as the source list. If it is longer, the remaining elements in the destination list are unaffected.
+This method runs in linear time.
+
+6)	public static boolean disjoint(Collection<?> c1, Collection<?> c2)
+
+Returns true if the two specified collections have no elements in common.
+
+7)	public static final <T> Set<T> emptySet()
+
+Returns the empty set (immutable). This set is serializable. Unlike the like-named field, this method is parameterized.
+This example illustrates the type-safe way to obtain an empty set:
+
+     Set<String> s = Collections.emptySet();
+ 
+Implementation note: Implementations of this method need not create a separate Set object for each call. Using this method is likely to have comparable cost to using the like-named field. (Unlike this method, the field does not provide type safety.)
+
+
+8)	public static <T> void fill(List<? super T> list,T obj)
+
+Replaces all of the elements of the specified list with the specified element.
+This method runs in linear time.
+
+9)	public static int frequency(Collection<?> c, Object o)
+
+Returns the number of elements in the specified collection equal to the specified object. More formally, returns the number of elements e in the collection such that (o == null ? e == null : o.equals(e)).
+
+10)	public static int indexOfSubList(List<?> source, List<?> target)
+
+Returns the starting position of the first occurrence of the specified target list within the specified source list, or -1 if there is no such occurrence. More formally, returns the lowest index i such that source.subList(i, i+target.size()).equals(target), or -1 if there is no such index. (Returns -1 if target.size() > source.size().)
+This implementation uses the "brute force" technique of scanning over the source list, looking for a match with the target at each location in turn
+
+
+
+
